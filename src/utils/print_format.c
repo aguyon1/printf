@@ -6,14 +6,14 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:03:00 by aguyon            #+#    #+#             */
-/*   Updated: 2023/10/12 16:41:04 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/12 16:59:17 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-static int	(*const	g_print_functions[])(int fd, va_list ap) =
-{
+static int (*const	g_print_functions[])(int fd, va_list ap)
+	= {
 	print_char,
 	print_str,
 	print_memory,
@@ -24,7 +24,7 @@ static int	(*const	g_print_functions[])(int fd, va_list ap) =
 	print_percent,
 };
 
-static const char g_conversions[] = "cspdiuxX%";
+static const char	g_conversions[] = "cspdiuxX%";
 
 static int	get_print_functions_key(char conversion)
 {
@@ -43,7 +43,6 @@ int	print_format(int fd, const char *format, va_list ap)
 	count = 0;
 	while (*format)
 	{
-
 		if (format[0] == '%' && format[1])
 		{
 			print_function_key = get_print_functions_key(format[0]);
