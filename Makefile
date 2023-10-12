@@ -6,7 +6,7 @@
 #    By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/12 16:22:48 by aguyon            #+#    #+#              #
-#    Updated: 2023/10/12 16:43:15 by aguyon           ###   ########.fr        #
+#    Updated: 2023/10/12 17:09:10 by aguyon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ CFLAGSDEV = -Wall -Wextra -Werror -g3
 
 LIBFT = libft/libft.a
 
-$(NAME): $(LIBFT) $(OBJ) $(HEADER)
+$(NAME): $(OBJ) $(LIBFT) $(HEADER)
 			ar rcs $(NAME) $(OBJ)
 
 all: $(NAME)
@@ -48,7 +48,7 @@ $(LIBFT):
 
 $(BUILD_DIR)/%.o: %.c
 	mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGSDEV) -c $< -o $@
 
 clean:
 	make clean -C libft

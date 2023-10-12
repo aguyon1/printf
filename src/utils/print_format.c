@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:03:00 by aguyon            #+#    #+#             */
-/*   Updated: 2023/10/12 16:59:17 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/12 17:13:59 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int (*const	g_print_functions[])(int fd, va_list ap)
 
 static const char	g_conversions[] = "cspdiuxX%";
 
-static int	get_print_functions_key(char conversion)
+static int	get_print_function_key(char conversion)
 {
 	char *const	conversion_ptr = ft_strchr(g_conversions, conversion);
 
@@ -38,6 +38,7 @@ static int	get_print_functions_key(char conversion)
 int	print_format(int fd, const char *format, va_list ap)
 {
 	int	count;
+	int	sub_count;
 	int	print_function_key;
 
 	count = 0;
@@ -45,16 +46,19 @@ int	print_format(int fd, const char *format, va_list ap)
 	{
 		if (format[0] == '%' && format[1])
 		{
-			print_function_key = get_print_functions_key(format[0]);
+			print_function_key = get_print_function_key(format[1]);
 			if (print_function_key != -1)
-				count += g_print_functions[print_function_key](fd, ap);
+				sub_count = g_print_functions[print_function_key](fd, ap);
 			format += 2;
 		}
 		else
 		{
-			count += write(1, format, 1);
+			sub_count = write(1, format, 1);
 			format += 1;
 		}
+		if (sub_count < 0)
+			return (-1);
+		count += sub_count;
 	}
 	return (count);
 }
