@@ -6,11 +6,11 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:07:51 by aguyon            #+#    #+#             */
-/*   Updated: 2023/10/12 16:08:04 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/12 16:37:55 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/ft_print.h"
+#include "../inc/ft_printf.h"
 
 int	ft_dprintf(int fd, const char *format, ...)
 {

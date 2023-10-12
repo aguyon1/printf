@@ -6,13 +6,13 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:03:08 by aguyon            #+#    #+#             */
-/*   Updated: 2023/10/12 16:06:22 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/12 16:20:20 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-int print_percent(int fd, va_list ap)
+int	print_percent(int fd, va_list ap)
 {
 	(void)ap;
 	return (write(fd, "%", 1));

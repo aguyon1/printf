@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_fomat.c                                      :+:      :+:    :+:   */
+/*   print_format.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:03:00 by aguyon            #+#    #+#             */
-/*   Updated: 2023/10/12 16:07:31 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/12 16:41:04 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/ft_printf.h"
 
-static const int	(*g_print_functions[])(int fd, va_list ap) =
+static int	(*const	g_print_functions[])(int fd, va_list ap) =
 {
 	print_char,
 	print_str,
@@ -53,7 +53,7 @@ int	print_format(int fd, const char *format, va_list ap)
 		}
 		else
 		{
-			count += printchar(format[0]);
+			count += write(1, format, 1);
 			format += 1;
 		}
 	}

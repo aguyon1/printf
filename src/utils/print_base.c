@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:00:51 by aguyon            #+#    #+#             */
-/*   Updated: 2023/10/12 16:02:23 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/12 16:39:11 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	print_base(int fd, __int128_t nb, unsigned int base)
 	i += nb_len - 1;
 	while (nb)
 	{
-		buffer[i] = nb % 10;
-		nb /= 10;
+		buffer[i] = nb % base;
+		nb /= base;
 	}
 	buffer[nb_len] = 0;
-	return (write(1, buffer, nb_len));
+	return (write(fd, buffer, nb_len));
 }
